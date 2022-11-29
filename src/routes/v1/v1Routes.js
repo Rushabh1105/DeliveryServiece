@@ -1,5 +1,7 @@
 const express = require("express");
 
+const orderController = require("../../controllers/orderController");
+
 const router = express.Router();
 
 router.get("/help", (req, res) => {
@@ -13,5 +15,11 @@ router.get("/help", (req, res) => {
         }
     })
 })
+
+router.post("/order", orderController.createOrder);
+router.patch("/order/:id", orderController.updateOrder);
+router.delete("/order/:id", orderController.deleteOrder);
+router.get("/order/:id", orderController.getOrder);
+router.get("/order", orderController.getAllOrder);
 
 module.exports = router;
